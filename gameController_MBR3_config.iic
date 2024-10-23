@@ -1,0 +1,63 @@
+[SPEED=100K] [VCC=3.3V]
+
+; Attempt to get attention
+r 37 x p [delay=10] r 37 x p [delay=10]
+
+w 37 00 ff 03 00 00 00 00 00 00 fc 03 0f 00 80 c8 c8 c8 c8 c8 c8 c8 c8 c8 7f 7f 7f 7f 7f 7f 01 00 00 00 00 00 00 00 00 00 01 80 06 00 00 02 00 02 00 00 00 00 00 00 00 1e 1e 00 00 1e 1e 00 00 1b 01 01 0f 00 00 00 00 00 09 09 00 00 00 00 00 00 01 50 00 37 06 00 00 0a 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 4a 4b p
+w 37 86 02 p
+
+; Raw config data
+; 0xFF, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFC, 0x03, 0x0F, 0x00, 0x80, 0xC8, 0xC8, 0xC8, 0xC8, 0xC8, 0xC8, 0xC8, 0xC8, 0xC8, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x80, 0x06, 0x00, 0x00, 0x02, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1E, 0x1E, 0x00, 0x00, 0x1E, 0x1E, 0x00, 0x00, 0x1B, 0x01, 0x01, 0x0F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x50, 0x00, 0x37, 0x06, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x4A, 0x4B
+
+
+; #00       #02    #04       #06       
+; SENSOR_EN FSS_EN TOGGLE_EN LED_ON_EN 
+; FF 03     00 00  00 00     00 00     
+
+; #08          #09          #0A          #0B          
+; SENSITIVITY0 SENSITIVITY1 SENSITIVITY2 SENSITIVITY3 
+; FC           03           0F           00           
+
+; #0C             #0D             #0E               #0F               #10               #11               #12               #13               #14               #15               #16                #17                #18                #19                #1A                #1B                
+; BASE_THRESHOLD0 BASE_THRESHOLD1 FINGER_THRESHOLD2 FINGER_THRESHOLD3 FINGER_THRESHOLD4 FINGER_THRESHOLD5 FINGER_THRESHOLD6 FINGER_THRESHOLD7 FINGER_THRESHOLD8 FINGER_THRESHOLD9 FINGER_THRESHOLD10 FINGER_THRESHOLD11 FINGER_THRESHOLD12 FINGER_THRESHOLD13 FINGER_THRESHOLD14 FINGER_THRESHOLD15 
+; 80              C8              C8                C8                C8                C8                C8                C8                C8                C8                7F                 7F                 7F                 7F                 7F                 7F                 
+
+; #1C             
+; SENSOR_DEBOUNCE 
+; 01              
+
+; #1D        #1E      #1F        #20        #21       #22          
+; BUTTON_HYS RESERVED BUTTON_LBR BUTTON_NNT BUTTON_NT RESERVED1    
+; 00         00       00         00         00        00 00 00 00  
+
+; #26     #27      #28       #29       #2A            #2C            #2E              #2F              #30      #31       #32      #33      #34     #35               #36               #37       #39               #3A               #3B       
+; PROX_EN PROX_CFG PROX_CFG2 RESERVED2 PROX_TOUCH_TH0 PROX_TOUCH_TH1 PROX_RESOLUTION0 PROX_RESOLUTION1 PROX_HYS RESERVED3 PROX_LBR PROX_NNT PROX_NT PROX_POSITIVE_TH0 PROX_POSITIVE_TH1 RESERVED4 PROX_NEGATIVE_TH0 PROX_NEGATIVE_TH1 RESERVED5 
+; 01      80       06        00        00 02          00 02          00               00               00       00        00       00       00      1E                1E                00 00     1E                1E                00 00     
+
+; #3D         
+; LED_ON_TIME 
+; 1B          
+
+; #3E        #3F            
+; BUZZER_CFG BUZZER_ON_TIME 
+; 01         01             
+
+; #40     #41                #42                #43                #44                #45                #46                #47                #48                #49       #4C     #4D         #4E         #4F         #50         
+; GPO_CFG PWM_DUTYCYCLE_CFG0 PWM_DUTYCYCLE_CFG1 PWM_DUTYCYCLE_CFG2 PWM_DUTYCYCLE_CFG3 PWM_DUTYCYCLE_CFG4 PWM_DUTYCYCLE_CFG5 PWM_DUTYCYCLE_CFG6 PWM_DUTYCYCLE_CFG7 RESERVED6 SPO_CFG DEVICE_CFG0 DEVICE_CFG1 DEVICE_CFG2 DEVICE_CFG3 
+; 0F      00                 00                 00                 00                 00                 09                 09                 00                 00 00 00  00      00          01          50          00          
+
+; #51      
+; I2C_ADDR 
+; 37       
+
+; #52          #53       
+; REFRESH_CTRL RESERVED7 
+; 06           00 00     
+
+; #55           #56                   #5D       #5E        #61        #62        #63        #64        #67        #68        #69        #6A                #70        #71        #72        #73        #74                            
+; STATE_TIMEOUT RESERVED8             RESERVED9 RESERVED10 RESERVED11 RESERVED12 RESERVED13 RESERVED14 RESERVED15 RESERVED16 RESERVED17 RESERVED18         RESERVED19 RESERVED20 RESERVED21 RESERVED22 RESERVED23                     
+; 0A            00 00 00 00 00 00 00  00        00 00 00   00         00         00         00 00 00   00         00         00         00 00 00 00 00 00  00         00         00         00         00 00 00 00 00 00 00 00 00 00  
+
+; #7E        
+; CONFIG_CRC 
+; 4A 4B      
